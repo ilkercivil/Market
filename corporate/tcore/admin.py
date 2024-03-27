@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.http import HttpRequest
-from .models import Contact,About, Service, Slider,Category,Blog
+from .models import Contact,About, Service, Slider,Category,Blog,Settings
 from modeltranslation.admin import TranslationAdmin
 from .admin_mixins import CommonMedia
 
@@ -39,3 +39,7 @@ class CategoryAdmin(TranslationAdmin,CommonMedia):
 @admin.register(Blog)
 class BlogAdmin(TranslationAdmin,CommonMedia):
     list_display=('title','content','views')
+
+@admin.register(Settings)
+class SettingsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'keywords', 'description', 'phone_fixed', 'phone_mobile', 'fax', 'email')

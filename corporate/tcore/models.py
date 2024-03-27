@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField  # RichTextField'ı burada içe aktarıyoruz
 from django.utils.text import slugify
 
 class Contact(models.Model):
@@ -10,7 +10,7 @@ class Contact(models.Model):
 
 class About(models.Model):
     title = models.CharField(max_length=200)
-    content = RichTextField()
+    content = RichTextField()  # RichTextField burada doğru şekilde kullanılıyor
 
 class Service(models.Model):
     title = models.CharField(max_length=200)
@@ -53,3 +53,14 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class Settings(models.Model):
+    logo_1=models.ImageField(upload_to='dimg',null=True ,blank=True)
+    logo_2=models.ImageField(upload_to='dimg',null=True ,blank=True)
+    title =models.CharField(max_length=225)
+    keywords=models.CharField(max_length=225)
+    description=models.CharField(max_length=225)
+    phone_fixed=models.CharField(max_length=15)
+    phone_mobile=models.CharField(max_length=15)
+    fax=models.CharField(max_length=15)
+    email=models.EmailField()
